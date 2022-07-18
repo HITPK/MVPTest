@@ -1,22 +1,30 @@
-package com.example.mvptest.mvp.v2.view;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mvptest.mvp.v7.view;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mvptest.R;
-import com.example.mvptest.mvp.v2.presenter.MainPresenter;
-import com.example.mvptest.mvp.v2.MainContract;
-import com.example.mvptest.mvp.v2.basemvp.BaseActivity;
+import androidx.annotation.Nullable;
 
-public class MainActivity extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView{
+import com.example.mvptest.R;
+import com.example.mvptest.mvp.v7.InjectPresenter;
+import com.example.mvptest.mvp.v7.MainContract;
+import com.example.mvptest.mvp.v7.basemvp.BaseActivity;
+import com.example.mvptest.mvp.v7.presenter.MainPresenter;
+
+/**
+ * MVP 的写法，Version 5: 依赖注入，解决多个 Presenter 的问题
+ */
+public class MainActivity extends BaseActivity implements MainContract.IMainView{
 
     private TextView tv;
+
+    @InjectPresenter
+    private MainPresenter mPresenter;
 
     @Override
     protected void initLayout(@Nullable Bundle savedInstanceState) {
@@ -26,21 +34,19 @@ public class MainActivity extends BaseActivity<MainContract.IMainPresenter> impl
     @Override
     protected void initViews() {
         tv = $(R.id.tv);
+
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), SecondActivity.class));
+            }
+        });
     }
 
     @Override
     protected void initData() {
+        //getPresenter().handlerData();
         mPresenter.handlerData();
-    }
-
-    @Override
-    protected MainContract.IMainPresenter setPresenter() {
-        return new MainPresenter();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
     }
 
     @Override

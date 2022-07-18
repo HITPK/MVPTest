@@ -1,7 +1,4 @@
-package com.example.mvptest.mvp.v2.view;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mvptest.mvp.v5.view;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -9,14 +6,23 @@ import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mvptest.R;
-import com.example.mvptest.mvp.v2.presenter.MainPresenter;
-import com.example.mvptest.mvp.v2.MainContract;
-import com.example.mvptest.mvp.v2.basemvp.BaseActivity;
+import androidx.annotation.Nullable;
 
+import com.example.mvptest.R;
+import com.example.mvptest.mvp.v5.InjectPresenter;
+import com.example.mvptest.mvp.v5.MainContract;
+import com.example.mvptest.mvp.v5.basemvp.BaseActivity;
+import com.example.mvptest.mvp.v5.presenter.MainPresenter;
+
+/**
+ * MVP 的写法，Version 5: 依赖注入，解决多个 Presenter 的问题
+ */
 public class MainActivity extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView{
 
     private TextView tv;
+
+    @InjectPresenter
+    private MainPresenter mPresenter;
 
     @Override
     protected void initLayout(@Nullable Bundle savedInstanceState) {
@@ -30,17 +36,13 @@ public class MainActivity extends BaseActivity<MainContract.IMainPresenter> impl
 
     @Override
     protected void initData() {
+        //getPresenter().handlerData();
         mPresenter.handlerData();
     }
 
     @Override
     protected MainContract.IMainPresenter setPresenter() {
-        return new MainPresenter();
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        return null;
     }
 
     @Override

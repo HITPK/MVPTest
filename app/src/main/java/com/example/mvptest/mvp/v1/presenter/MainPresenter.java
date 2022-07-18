@@ -38,7 +38,7 @@ public class MainPresenter implements MainContract.IMainPresenter{
             public void onResponse(Call call, Response response) throws IOException {
                 String content = response.body().string();
                 if (mView != null) {
-                    mView.succes(content);
+                    mView.success(content);
                 }
             }
         });

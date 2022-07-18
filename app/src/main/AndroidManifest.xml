@@ -11,15 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvp.v2.view.MainActivity">
+        <activity android:name=".mvp.v1.view.MainActivity" />
+        <activity android:name=".mvp.v2.basemvp.BaseActivity" />
+        <activity android:name=".mvp.v6.view.SecondActivity"/>
+        <activity android:name=".mvp.v7.view.SecondActivity"/>
+        <activity android:name=".mvp.v7.view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.v2.basemvp.BaseActivity" />
-        <activity android:name=".mvp.v1.view.MainActivity">
-        </activity>
+
     </application>
 
 </manifest>

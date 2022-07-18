@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.IMai
     }
 
     @Override
-    public void succes(final String content) {
+    public void success(final String content) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {

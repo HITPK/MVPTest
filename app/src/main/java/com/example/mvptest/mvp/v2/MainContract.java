@@ -16,7 +16,7 @@ public interface MainContract {
     interface IMainView extends IBaseView {
         void showDialog();
 
-        void succes(String content);
+        void success(String content);
     }
 
     interface IMainPresenter extends IBasePresenter {

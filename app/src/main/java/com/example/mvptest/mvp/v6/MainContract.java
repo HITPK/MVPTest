@@ -1,4 +1,7 @@
-package com.example.mvptest.mvp.v1;
+package com.example.mvptest.mvp.v6;
+
+import com.example.mvptest.mvp.v6.basemvp.IBasePresenter;
+import com.example.mvptest.mvp.v6.basemvp.IBaseView;
 
 import okhttp3.Callback;
 
@@ -10,13 +13,13 @@ public interface MainContract {
         void requestBaidu(Callback callback);
     }
 
-    interface IMainView {
+    interface IMainView extends IBaseView {
         void showDialog();
 
         void success(String content);
     }
 
-    interface IMainPresenter {
+    interface IMainPresenter extends IBasePresenter {
         void handlerData();
     }
 }

@@ -1,11 +1,11 @@
-package com.example.mvptest.mvp.v2.presenter;
+package com.example.mvptest.mvp.v3.presenter;
 
 import android.util.Log;
 
-import com.example.mvptest.mvp.v2.MainContract;
-import com.example.mvptest.mvp.v2.basemvp.BasePresenter;
-import com.example.mvptest.mvp.v2.basemvp.IBaseView;
-import com.example.mvptest.mvp.v2.model.DataModel;
+import com.example.mvptest.mvp.v3.MainContract;
+import com.example.mvptest.mvp.v3.basemvp.BasePresenter;
+import com.example.mvptest.mvp.v3.basemvp.IBaseView;
+import com.example.mvptest.mvp.v3.model.DataModel;
 
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ import okhttp3.Response;
 /**
  * presenter 层，承担业务逻辑处理，数据源处理等
  */
-public class MainPresenter extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter{
+public class MainPresenter extends BasePresenter<MainContract.IMainView> implements MainContract.IMainPresenter {
 
     private MainContract.IMainModel mModel;
 
@@ -28,9 +28,9 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
 
     @Override
     public void handlerData() {
-        if (mView != null) {
-            mView.showDialog();
-        }
+
+        getView().showDialog();
+
         /**
          * 发起请求，获得回调数据
          */
@@ -42,9 +42,9 @@ public class MainPresenter extends BasePresenter<MainContract.IMainView> impleme
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String content = response.body().string();
-                if (mView != null) {
-                    mView.success(content);
-                }
+
+                getView().success(content);
+
             }
         });
     }

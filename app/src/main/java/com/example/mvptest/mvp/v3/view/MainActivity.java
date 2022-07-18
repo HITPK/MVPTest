@@ -1,7 +1,4 @@
-package com.example.mvptest.mvp.v2.view;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.mvptest.mvp.v3.view;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -9,10 +6,12 @@ import android.os.Handler;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+
 import com.example.mvptest.R;
-import com.example.mvptest.mvp.v2.presenter.MainPresenter;
-import com.example.mvptest.mvp.v2.MainContract;
-import com.example.mvptest.mvp.v2.basemvp.BaseActivity;
+import com.example.mvptest.mvp.v3.MainContract;
+import com.example.mvptest.mvp.v3.basemvp.BaseActivity;
+import com.example.mvptest.mvp.v3.presenter.MainPresenter;
 
 public class MainActivity extends BaseActivity<MainContract.IMainPresenter> implements MainContract.IMainView{
 
@@ -30,7 +29,7 @@ public class MainActivity extends BaseActivity<MainContract.IMainPresenter> impl
 
     @Override
     protected void initData() {
-        mPresenter.handlerData();
+        getPresenter().handlerData();
     }
 
     @Override
